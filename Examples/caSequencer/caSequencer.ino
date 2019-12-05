@@ -22,8 +22,8 @@ void setup() {
   Serial.begin(9600);
 
   digitalWrite(latchPin, 0);
-  ca_seq_old = 0x08;
-  ca_seq_cur = 0x08;                                                            //0b00001000
+  ca_seq_old = rand() %255;
+  ca_seq_cur = ca_seq_old;                                                      //0b00001000
   shiftOut(ca_seq_cur);
   digitalWrite(latchPin, 1);
 }
