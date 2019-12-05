@@ -1,5 +1,4 @@
-#define TRUE 1
-#define FALSE 0
+// v0.1
 
 int linPotPin = A0;                                                             //Lin Pot
 int latchPin = 8;                                                               //ST_CP
@@ -24,7 +23,7 @@ void setup() {
 
   digitalWrite(latchPin, 0);
   ca_seq_old = 0x08;
-  ca_seq_cur = 0x08;//0b00001000
+  ca_seq_cur = 0x08;                                                            //0b00001000
   shiftOut(ca_seq_cur);
   digitalWrite(latchPin, 1);
 }
@@ -44,10 +43,12 @@ byte sequenceUpdate(byte dataIn) {
   byte dataOut = 0;
   Serial.println();
   Serial.println(dataIn, BIN);
-
+  bool p, q, r;
 
   for(int i=6; i>0; i--) {
-    if((dataIn & (1<<(i-1)))^(dataIn & (1<<(i+1)))) {
+    p = (dataIn & (1<<(i-1)));
+    r = (dataIn & (1<<(i+1)));
+    if((p || r) && ( !(p && r))) {
       dataOut += 1;
       Serial.print(" dataOut +=1 at ");
       Serial.print(i);
