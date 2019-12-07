@@ -1,4 +1,4 @@
-// v0.1
+// v0.1.1
 
 int linPotPin = A0;                                                             //Lin Pot
 int latchPin = 8;                                                               //ST_CP
@@ -9,8 +9,6 @@ byte ca_seq_old = 0;
 byte ca_seq_cur = 0;
 int linpot_val = 0;
 
-const byte seq_length = 8;
-byte seq_loop = seq_length;
 int bpm = 110;
 byte outputNormalizer[8] = {0, 1, 2, 4, 5, 6, 3, 7};
 
@@ -41,8 +39,6 @@ void loop() {
 
 byte sequenceUpdate(byte dataIn) {
   byte dataOut = 0;
-  Serial.println();
-  Serial.println(dataIn, BIN);
   bool p, q, r;
 
   for(int i=6; i>0; i--) {
@@ -50,18 +46,9 @@ byte sequenceUpdate(byte dataIn) {
     r = (dataIn & (1<<(i+1)));
     if((p || r) && ( !(p && r))) {
       dataOut += 1;
-      Serial.print(" dataOut +=1 at ");
-      Serial.print(i);
-      Serial.print(" ");
-      Serial.print(dataOut, BIN);
-      }
-    if(dataOut) {
-      dataOut <<= 1;
-      Serial.print(" Shifting at ");
-      Serial.print(i);
-      Serial.print(" ");
-      Serial.print(dataOut, BIN);
     }
+    if(dataOut)
+      dataOut <<= 1;
   }
   Serial.println();
   Serial.println(dataOut, BIN);
