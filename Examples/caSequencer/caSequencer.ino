@@ -56,13 +56,12 @@ byte sequenceUpdate(byte dataIn) {
 }
 
 void shiftOut(byte dataOut) {
-  int i=0;
   int pinState;
 
   digitalWrite(dataPin, 0);
   digitalWrite(clockPin, 0);
 
-  for (i=7; i>=0; i--)  {
+  for (int i=7; i>=0; i--)  {
     digitalWrite(clockPin, 0);
 
     if ( dataOut & (1<<(outputNormalizer[i])) ) {
