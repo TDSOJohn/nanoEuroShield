@@ -28,7 +28,7 @@ void setup() {
 
 void loop() {
   linpot_val = analogRead(linPotPin);
-  bpm = linpot_val + 20;                                                        //Bpm range = 20...275
+  bpm = linpot_val + 20;                                                        //Bpm range = (20...275) + loop runtime
   ca_seq_old = ca_seq_cur;
   ca_seq_cur = sequenceUpdate(ca_seq_old);
   digitalWrite(latchPin, 0);
