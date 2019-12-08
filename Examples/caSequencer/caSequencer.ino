@@ -43,8 +43,8 @@ byte sequenceUpdate(byte dataIn) {
 
   for(int i=7; i>=0; i--) {
     if(!i || i==7) {
-      p = (dataIn & (1<<(7));
-      q = (dataIn & (1);
+      p = (dataIn & (1<<7));
+      q = (dataIn & (1));
     } else {
       p = (dataIn & (1<<(i-1)));
       r = (dataIn & (1<<(i+1)));
