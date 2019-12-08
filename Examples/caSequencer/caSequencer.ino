@@ -42,7 +42,7 @@ byte sequenceUpdate(byte dataIn) {
   bool p, q, r;
 
   for(int i=7; i>=0; i--) {
-    if(!i || i==7) {
+    if(!i || (i==7)) {
       p = (dataIn & (1<<7));
       q = (dataIn & (1));
     } else {
