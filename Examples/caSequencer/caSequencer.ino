@@ -41,9 +41,14 @@ byte sequenceUpdate(byte dataIn) {
   byte dataOut = 0;
   bool p, q, r;
 
-  for(int i=6; i>0; i--) {
-    p = (dataIn & (1<<(i-1)));
-    r = (dataIn & (1<<(i+1)));
+  for(int i=7; i>=0; i--) {
+    if(!i || i==7) {
+      p = (dataIn & (1<<(7));
+      q = (dataIn & (1);
+    } else {
+      p = (dataIn & (1<<(i-1)));
+      r = (dataIn & (1<<(i+1)));
+    }
     if((p || r) && ( !(p && r))) {
       dataOut += 1;
     }
