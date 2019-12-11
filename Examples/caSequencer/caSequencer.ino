@@ -1,9 +1,9 @@
 // v0.1.1
 
-const byte linPotPin = A0;                                                             //Lin Pot
-const byte latchPin = 8;                                                               //ST_CP
-const byte dataPin = 11;                                                               //DS
-const byte clockPin = 12;                                                              //SH_CP
+const byte linPotPin = A0;                                                      //Lin Pot
+const byte latchPin = 8;                                                        //ST_CP
+const byte dataPin = 11;                                                        //DS
+const byte clockPin = 12;                                                       //SH_CP
 
 byte ca_seq_old = 0;
 byte ca_seq_cur = 0;
